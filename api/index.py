@@ -58,6 +58,7 @@ def handle_message(event):
         return
 
     if working_status:
+        event.message.text = event.message.text + ",請以100個字以內回答。"
         chatgpt.add_msg(f"HUMAN:{event.message.text}?\n")
         reply_msg = chatgpt.get_response().replace("AI:", "", 1)
         chatgpt.add_msg(f"AI:{reply_msg}\n")
